@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Available Trips{% endblock %}
+
+{% block content %}
+{% if user_role == 'staff' %}
+<h3>Top 10 Booked Trips</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Trip ID</th>
+            <th>Ship Name</th>
+            <th>Capacity</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Booking Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trip in top_trips %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ trip.trip.trip_id }}</td>
+            <td>{{ trip.trip.ship_name }}</td>
+            <td>{{ trip.trip.ship_capacity }}</td>
+            <td>{{ trip.trip.start_date }}</td>
+            <td>{{ trip.trip.end_date }}</td>
+            <td>{{ trip.booking_count }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h3>Your Bookings</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Trip ID</th>
+            <th>Ship Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Total Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in user_bookings %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ booking.trip.trip_id }}</td>
+            <td>{{ booking.trip.ship_name }}</td>
+            <td>{{ booking.trip.start_date }}</td>
+            <td>{{ booking.trip.end_date }}</td>
+            <td>${{ booking.total_amount }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

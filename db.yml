@@ -1,0 +1,5 @@
+host: localhost
+database: trip
+user: root
+password: password
+port: 3306

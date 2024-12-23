@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Trips{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Trips After Date</h1>
+
+    <!-- Date Selection Form -->
+    <form method="get" action="/trip/trips" class="mb-4">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="date" class="form-label">Select a start date:</label>
+                <input type="date" id="date" name="date" class="form-control" value="{{ selected_date }}">
+            </div>
+            <div class="col-md-2 align-self-end">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Passengers Table -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Trip ID</th>
+                <th>Ship Name</th>
+                <th>Capacity</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                {% if user_role == 'staff' %}
+                <th>Actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for trip in trips %}
+            <tr>
+                <td>{{ trip.trip_id }}</td>
+                <td>{{ trip.ship_name }}</td>
+                <td>{{ trip.ship_capacity }}</td>
+                <td>{{ trip.start_date }}</td>
+                <td>{{ trip.end_date }}</td>
+                {% if user_role == 'staff' %}
+                <td>
+                    <a href="/trip/delete?id={{ trip.trip_id }}">
+                        <button class="btn btn-primary">Delete</button>
+                    </a>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - Trip App{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4">About Us</h1>
+    <div class="row">
+        <div class="col-lg-6">
+            <h3>Welcome to Trip App</h3>
+            <p>
+                Trip App is your go-to platform for discovering exciting trips across the world. Whether you are a seasoned traveler or planning your first adventure, we offer a wide variety of trips to choose from. Our goal is to provide a seamless and enjoyable booking experience with the best prices and premium services.
+            </p>
+            <h4>Our Mission</h4>
+            <p>
+                Our mission is simple: to make your travel dreams come true. We aim to offer a wide range of travel options that cater to your preferences, whether you're looking for relaxation, adventure, or cultural exploration.
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <img src="{{ url_for('static', filename='about.jpg') }}" class="img-fluid" alt="Travel Image">
+        </div>
+    </div>
+    
+    <h4 class="mt-5">Why Choose Us?</h4>
+    <ul class="list-group">
+        <li class="list-group-item">Easy and secure booking process.</li>
+        <li class="list-group-item">Affordable and flexible packages.</li>
+        <li class="list-group-item">Customer support available 24/7.</li>
+        <li class="list-group-item">Trusted by thousands of satisfied customers worldwide.</li>
+    </ul>
+</div>
+{% endblock %}

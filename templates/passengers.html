@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Passengers{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Passengers Who Booking After Date</h1>
+
+    <!-- Date Selection Form -->
+    <form method="get" action="/trip/passengers" class="mb-4">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="date" class="form-label">Select a booking date:</label>
+                <input type="date" id="date" name="date" class="form-control" value="{{ selected_date }}">
+            </div>
+            <div class="col-md-2 align-self-end">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Passengers Table -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>User ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if passengers %}
+                {% for passenger in passengers %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ passenger.f_name }}</td>
+                    <td>{{ passenger.l_name }}</td>
+                    <td>{{ passenger.user_id }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4" class="text-center">No passengers found for the selected date.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

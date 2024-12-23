@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Trip App{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4">Contact Us</h1>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <h4>Our Office</h4>
+            <p>
+                Trip App Headquarters<br>
+                1234 Adventure St, Suite 500<br>
+                Travel City, TR 54321<br>
+                Email: support@tripapp.com<br>
+                Phone: +1 (800) 555-1234
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <h4>Get in Touch</h4>
+            <p>
+                Have a question? Need assistance? Fill out the form below, and we’ll get back to you as soon as possible!
+            </p>
+            <form action="/submit-contact-form" method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
